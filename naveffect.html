@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        font: bold 1.5rem sans-serif;
+        text-transform: uppercase;
+        color: gray;
+      }
+
+      ul li {
+        padding: 0 0.5em 0.25em;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+      ul li:hover {
+        color: aliceblue;
+      }
+      ul li:before {
+        content: " ";
+        position: absolute;
+        inset: calc(100% - 3px) 0 0 0;
+        background-color: #ce4f20;
+        scale: 0 1;
+        transition: 0.3s translate 0s 0.3s;
+      }
+      ul:hover li:before {
+        scale: 1;
+      }
+
+      ul li:hover:before {
+        translate: 0;
+        transition: 0.3s;
+      }
+      ul:hover li:has(~ li:hover):before {
+        translate: 100% 0;
+        transition: 0.2s 0.2s, scale 0s 0.4s;
+      }
+      ul:hover li:hover ~ li:before {
+        translate: -100% 0;
+        transition: 0.2s 0.2s, scale 0s 0.4s;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Service</li>
+      <li>Contact</li>
+      <li>Login</li>
+    </ul>
+  </body>
+</html>

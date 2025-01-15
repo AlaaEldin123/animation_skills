@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GUESS WHO THE PEOPLE</title>
+    <style>
+      :root {
+        --bg-color: rgb(44, 122, 153);
+        --text-color: rgb(255, 255, 255);
+      }
+      html {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        background: var(--bg-color);
+        color: var(--text-color);
+      }
+      body {
+        position: relative;
+        transform: scale(1.5);
+        letter-spacing: 5px;
+      }
+
+      h1 {
+        margin: 0;
+        line-height: 100%;
+      }
+
+      div {
+        width: 100px;
+        height: 300px;
+        background: url("https://people.com/thmb/5yFFo8hOA8i39cewQzBzI2Qfwjk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(499x0:501x2)/POTY-cover-tout-d827554fa3c949c59a9d494773a7c409.jpg");
+        display: inline-block;
+        position: relative;
+        clip-path: polygon(-1% 37%, 101% 37%, 101% 45%, -1% 45%);
+        transition: 0.5s;
+        letter-spacing: 0;
+      }
+      div:before {
+        width: 90%;
+        color: var(--text-color);
+        background: var(--bg-color);
+        position: absolute;
+        left: 5%;
+        bottom: 5%;
+        padding: 5px 0;
+      }
+      div:hover {
+        clip-path: polygon(-1% 0%, 101% 0%, 101% 101%, -1% 101%);
+      }
+      div:nth-child(3) {
+        background-position: 0 0;
+      }
+      div:nth-child(3):before {
+        content: "ALAA ELDIN";
+      }
+      div:nth-child(4) {
+        background-position: 30% 0;
+      }
+      div:nth-child(4):before {
+        content: "jon";
+      }
+
+      div:nth-child(5) {
+        background-position: 67% 0;
+      }
+      div:nth-child(5):before {
+        content: "Rin";
+      }
+
+      div:nth-child(6) {
+        background-position: 100% 0;
+      }
+      div:nth-child(6):before {
+        content: "JOHN";
+      }
+
+
+
+    </style>
+  </head>
+  <body>
+    <h1>GUESS WHO THE PEOPLE</h1>
+    <p>HOVER TO REVEAL</p>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>move element</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(230, 242, 242);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      #container {
+        position: relative;
+        width: 80%;
+        height: 80%;
+        border: 2px solid red;
+        overflow: hidden;
+      }
+
+      #moveable {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="moveable"></div>
+    </div>
+
+    <script>
+      const moveable = document.getElementById("moveable");
+      const container = document.getElementById("container");
+
+      const containerRect = container.getBoundingClientRect();
+      const moveableRect = moveable.getBoundingClientRect();
+
+      let position = {
+        top: moveable.offsetTop,
+        left: moveable.offsetLeft,
+      };
+
+      document.addEventListener("keydown", (event) => {
+        const step = 10;
+        switch (event.key.toLowerCase()) {
+          case "w":
+            position.top = Math.max(0, position.top - step);
+            break;
+
+          case "s":
+            position.top = Math.min(
+              container.clientHeight - moveableRect.height,
+              position.top + step
+            );
+            break;
+
+          case "a":
+            position.left = Math.max(0, position.left - step);
+            break;
+
+          case "d":
+            position.left = Math.min(
+              container.clientWidth - moveableRect.width,
+              position.left + step
+            );
+            break;
+
+          case " ":
+            const randomColor = `#${Math.floor(Math.random() * 16777215)
+              .toString(16)
+              .padStart(6, "0")}`;
+            moveable.style.backgroundColor = randomColor;
+            break;
+          default:
+            return;
+        }
+
+        moveable.style.top = `${position.top}px`;
+        moveable.style.left = `${position.left}px`;
+      });
+    </script>
+  </body>
+</html>
+
+
